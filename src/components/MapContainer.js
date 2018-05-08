@@ -38,7 +38,7 @@ export class MapContainer extends React.Component {
             lat: 42.0981495,
             lng: 4.1433417
            }}
-          zoom={ 14 }
+          zoom={ 15 }
           center={{ 
             lat: this.props.currentLocationLat,
             lng: this.props.currentLocationLng
