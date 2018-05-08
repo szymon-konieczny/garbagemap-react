@@ -25,5 +25,7 @@
     "eject": "react-scripts eject"
   },
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": "http://github.com/szymon-konieczny/garbagemap-react",
+  "author": "Szymon Konieczny <szykon@gmail.com>"
 }

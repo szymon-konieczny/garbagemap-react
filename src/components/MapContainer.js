@@ -50,7 +50,7 @@ export class MapContainer extends React.Component {
         <Marker 
           title="Current location"
           icon={{
-            path: google.maps.SymbolPath.CIRCLE,
+            path: this.props.google.maps.SymbolPath.CIRCLE,
             scale: 5.5,
             fillColor: "blue",
             fillOpacity: 0.95,
