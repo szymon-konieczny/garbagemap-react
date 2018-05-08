@@ -22,7 +22,7 @@ export class MapContainer extends React.Component {
         return 'red'
         break;
       case 'other':
-        return 'violet'
+        return 'purple'
         break;
       default:
         return 'white'
