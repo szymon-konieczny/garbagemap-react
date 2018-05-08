@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-
 class Geolocation extends React.Component {
   setCurrentLocationState = (props) => {
     const lat = this.props.coords.latitude;
