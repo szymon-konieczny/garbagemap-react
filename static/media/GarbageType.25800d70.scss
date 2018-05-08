@@ -1,0 +1,23 @@
+.garbage-type {
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  margin: 5px;
+  background: transparent;
+  border: 3px solid #000;
+  border-radius: 50%;
+  z-index: 2;
+  cursor: pointer;
+  &[type="tires"] {
+    background: #000;
+  }
+  &[type="illegal"] {
+    background: orange;
+  }
+  &[type="hazardous"] {
+    background: red;
+  }
+  &[type="other"] {
+    background: blue;
+  }
+}
