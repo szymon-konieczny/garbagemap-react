@@ -36,7 +36,7 @@ export class MapContainer extends React.Component {
           google={ this.props.google }
           initialCenter={{ 
             lat: 42.0981495,
-            lng: 4.1433417
+            lng: 14.1433417
            }}
           zoom={ 18 }
           center={{ 
@@ -52,9 +52,11 @@ export class MapContainer extends React.Component {
           icon={{
             path: this.props.google.maps.SymbolPath.CIRCLE,
             scale: 5.5,
-            fillColor: "blue",
+            fillColor: "lightblue",
             fillOpacity: 0.95,
-            strokeWeight: 0.4
+            strokeColor: 'white',
+            strokeWeight: 3.5,
+            strokeOpacity: 0.5
           }}
           position={{lat: this.props.currentLocationLat, lng: this.props.currentLocationLng}} 
           draggable={ false }
@@ -66,10 +68,11 @@ export class MapContainer extends React.Component {
             position={ marker.location } 
             icon={{
               path: this.props.google.maps.SymbolPath.CIRCLE,
-              scale: 5.5,
+              scale: 7.5,
               fillColor: this.markerColor(marker.type),
               fillOpacity: 0.95,
-              strokeWeight: 0.4
+              strokeColor: 'white',
+              strokeWeight: 0.6
             }}
           />) }
         </Map>
