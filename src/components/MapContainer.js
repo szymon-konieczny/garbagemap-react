@@ -52,8 +52,8 @@ export class MapContainer extends React.Component {
           icon={{
             path: this.props.google.maps.SymbolPath.CIRCLE,
             scale: 5.5,
-            fillColor: "lightblue",
-            fillOpacity: 0.95,
+            fillColor: "00B2FF",
+            fillOpacity: 1,
             strokeColor: 'white',
             strokeWeight: 3.5,
             strokeOpacity: 0.5
