@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import * as MapContainer from '../components/pages/MapContainer';
+import MapContainer from '../components/pages/MapContainer';
 import GarbageList from '../components/pages/GarbageList';
 
-const AppRouter = () => (
+const AppRouter = (props) => (
   <React.Fragment>
     <BrowserRouter>
       <Switch>
-        <Route path="/home" render={ (props) => <MapContainer { ...props } /> } exact={ true }/>
-        <Route path="/list" render={ (props) => <GarbageList { ...props } /> } />
+        <Route path="/" render={ () => <MapContainer currentLocationLat={ props.currentLocationLat } currentLocationLng={ props.currentLocationLng } /> } exact={ true } />
+        <Route path="/list" render={ () => <GarbageList currentLocationLat={ props.currentLocationLat } currentLocationLng={ props.currentLocationLng } /> } />
       </Switch>
     </BrowserRouter>
   </React.Fragment>

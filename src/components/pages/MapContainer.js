@@ -6,8 +6,8 @@ import '../../styles/components/MapContainer.scss';
 import type from '../../data/garbageTypes';
 import markers from '../../data/markers';
 
-export class MapContainer extends React.Component {
-
+class MapContainer extends React.Component {
+  
   getGarbagesFromLocalStorage = () => {
     const garbagesJSON = localStorage.getItem('garbageList');
     const garbages = JSON.parse(garbagesJSON);
@@ -32,21 +32,15 @@ export class MapContainer extends React.Component {
         return 'white'
     };
   };
-  getMapProps = (props) => {
-    return props;
-  }
+  
   render() {
-
-    const { currentLocationLat, currentLocationLng } = this.props;
-
     return (
       <React.Fragment>
         <GarbageTypeSpotter 
-          currentLocationLat={ currentLocationLat } 
-          currentLocationLng={ currentLocationLng } 
+          currentLocationLat={ this.props.currentLocationLat } 
+          currentLocationLng={ this.props.currentLocationLng } 
         />
         <Map 
-          mapProps={ this.getMapProps }
           className="map-container"
           google={ this.props.google }
           initialCenter={{ 
@@ -55,12 +49,12 @@ export class MapContainer extends React.Component {
            }}
           zoom={ 18 }
           center={{ 
-            lat: currentLocationLat,
-            lng: currentLocationLng
+            lat: this.props.currentLocationLat,
+            lng: this.props.currentLocationLng
           }}
         >
-          { this.props.mapProps(props) }
-        { console.log(currentLocationLat, currentLocationLng) }
+      
+        { console.log(this.props.currentLocationLat, this.props.currentLocationLng) }
         
         <Marker 
           title="Current location"
@@ -73,7 +67,7 @@ export class MapContainer extends React.Component {
             strokeWeight: 3.5,
             strokeOpacity: 0.5
           }}
-          position={{lat: currentLocationLat, lng: currentLocationLng}} 
+          position={{lat: this.props.currentLocationLat, lng: this.props.currentLocationLng}} 
           draggable={ false }
         />
         { this.getGarbagesFromLocalStorage() && this.getGarbagesFromLocalStorage().map((marker, index) => 

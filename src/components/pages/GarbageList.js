@@ -6,7 +6,6 @@ const GarbageList = (props) => {
     <div className="garbage-list">
       <br /><br /><br /><br /><br />
       <p>List of garbages</p>
-      <p>{ currentLocationLat }</p>
     </div>
   );
 }
