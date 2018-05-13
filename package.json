@@ -17,6 +17,8 @@
     "react-dom": "^16.3.2",
     "react-geolocated": "^2.3.2",
     "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "sass-loader": "^7.0.1",
     "source-map": "^0.7.2",
@@ -38,5 +40,6 @@
   "main": "index.js",
   "license": "MIT",
   "repository": "http://github.com/szymon-konieczny/garbagemap-react",
-  "author": "Szymon Konieczny <szykon@gmail.com>"
+  "author": "Szymon Konieczny <szykon@gmail.com>",
+  "description": "App that allows to spot environmental hazards."
 }

@@ -1,15 +1,19 @@
 import * as React from 'react';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
-import '../styles/components/MapContainer.scss';
-import type from '../data/garbageTypes';
-import markers from '../data/markers';
+import GarbageTypeSpotter from '../GarbageTypeSpotter';
 
-export class MapContainer extends React.Component {
+import '../../styles/components/MapContainer.scss';
+import type from '../../data/garbageTypes';
+import markers from '../../data/markers';
+
+class MapContainer extends React.Component {
+  
   getGarbagesFromLocalStorage = () => {
     const garbagesJSON = localStorage.getItem('garbageList');
     const garbages = JSON.parse(garbagesJSON);
     return garbages;
-  }
+  };
+
   markerColor = (type) => {
     switch (type) {
       case 'tires':
@@ -26,11 +30,16 @@ export class MapContainer extends React.Component {
         break;
       default:
         return 'white'
-    }
-  }
+    };
+  };
+  
   render() {
     return (
       <React.Fragment>
+        <GarbageTypeSpotter 
+          currentLocationLat={ this.props.currentLocationLat } 
+          currentLocationLng={ this.props.currentLocationLng } 
+        />
         <Map 
           className="map-container"
           google={ this.props.google }
@@ -44,7 +53,7 @@ export class MapContainer extends React.Component {
             lng: this.props.currentLocationLng
           }}
         >
-
+      
         { console.log(this.props.currentLocationLat, this.props.currentLocationLng) }
         
         <Marker 
@@ -78,8 +87,8 @@ export class MapContainer extends React.Component {
         </Map>
       </React.Fragment>
     );
-  }
-}
+  };
+};
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyAivECeR4VCc4a19DC4cuwJc_IqFlyt5RU'
