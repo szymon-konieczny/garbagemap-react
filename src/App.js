@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Header from './components/Header';
-import GarbageTypeSpotter from './components/GarbageTypeSpotter';
-import MapContainer from './components/MapContainer';
+import AppRouter from './routers/AppRouter';
 import Footer from './components/Footer';
 import { geolocated } from 'react-geolocated';
 
@@ -25,13 +24,9 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        <GarbageTypeSpotter 
+        <AppRouter 
           currentLocationLat={ this.state.currentLocation.lat } 
-          currentLocationLng={ this.state.currentLocation.lng } 
-        />
-        <MapContainer 
-          currentLocationLat={ this.state.currentLocation.lat } 
-          currentLocationLng={ this.state.currentLocation.lng } 
+          currentLocationLng={ this.state.currentLocation.lng }
         />
         <Footer 
           currentLocationLat={ this.state.currentLocation.lat } 

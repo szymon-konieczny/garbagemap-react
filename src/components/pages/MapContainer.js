@@ -1,15 +1,19 @@
 import * as React from 'react';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
-import '../styles/components/MapContainer.scss';
-import type from '../data/garbageTypes';
-import markers from '../data/markers';
+import GarbageTypeSpotter from '../GarbageTypeSpotter';
+
+import '../../styles/components/MapContainer.scss';
+import type from '../../data/garbageTypes';
+import markers from '../../data/markers';
 
 export class MapContainer extends React.Component {
+
   getGarbagesFromLocalStorage = () => {
     const garbagesJSON = localStorage.getItem('garbageList');
     const garbages = JSON.parse(garbagesJSON);
     return garbages;
-  }
+  };
+
   markerColor = (type) => {
     switch (type) {
       case 'tires':
@@ -26,12 +30,23 @@ export class MapContainer extends React.Component {
         break;
       default:
         return 'white'
-    }
+    };
+  };
+  getMapProps = (props) => {
+    return props;
   }
   render() {
+
+    const { currentLocationLat, currentLocationLng } = this.props;
+
     return (
       <React.Fragment>
+        <GarbageTypeSpotter 
+          currentLocationLat={ currentLocationLat } 
+          currentLocationLng={ currentLocationLng } 
+        />
         <Map 
+          mapProps={ this.getMapProps }
           className="map-container"
           google={ this.props.google }
           initialCenter={{ 
@@ -40,12 +55,12 @@ export class MapContainer extends React.Component {
            }}
           zoom={ 18 }
           center={{ 
-            lat: this.props.currentLocationLat,
-            lng: this.props.currentLocationLng
+            lat: currentLocationLat,
+            lng: currentLocationLng
           }}
         >
-
-        { console.log(this.props.currentLocationLat, this.props.currentLocationLng) }
+          { this.props.mapProps(props) }
+        { console.log(currentLocationLat, currentLocationLng) }
         
         <Marker 
           title="Current location"
@@ -58,7 +73,7 @@ export class MapContainer extends React.Component {
             strokeWeight: 3.5,
             strokeOpacity: 0.5
           }}
-          position={{lat: this.props.currentLocationLat, lng: this.props.currentLocationLng}} 
+          position={{lat: currentLocationLat, lng: currentLocationLng}} 
           draggable={ false }
         />
         { this.getGarbagesFromLocalStorage() && this.getGarbagesFromLocalStorage().map((marker, index) => 
@@ -78,8 +93,8 @@ export class MapContainer extends React.Component {
         </Map>
       </React.Fragment>
     );
-  }
-}
+  };
+};
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyAivECeR4VCc4a19DC4cuwJc_IqFlyt5RU'
