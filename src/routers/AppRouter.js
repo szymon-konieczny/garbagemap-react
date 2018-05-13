@@ -7,8 +7,17 @@ const AppRouter = (props) => (
   <React.Fragment>
     <BrowserRouter>
       <Switch>
-        <Route path="/" render={ () => <MapContainer currentLocationLat={ props.currentLocationLat } currentLocationLng={ props.currentLocationLng } /> } exact={ true } />
-        <Route path="/list" render={ () => <GarbageList currentLocationLat={ props.currentLocationLat } currentLocationLng={ props.currentLocationLng } /> } />
+        <Route path="/" 
+          render={ () => <MapContainer 
+            currentLocationLat={ props.currentLocationLat } 
+            currentLocationLng={ props.currentLocationLng } /> } 
+          exact={ true } 
+        />
+        <Route path="/list" 
+          render={ () => <GarbageList 
+            currentLocationLat={ props.currentLocationLat } 
+            currentLocationLng={ props.currentLocationLng } /> } 
+        />
       </Switch>
     </BrowserRouter>
   </React.Fragment>
