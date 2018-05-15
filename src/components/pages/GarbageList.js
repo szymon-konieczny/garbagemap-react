@@ -7,14 +7,13 @@ const GarbageList = (props) => {
   const garbages = fetchGarbages();
   return (
     <div className="page">
-      
-      <p>List of garbages</p>
+      <h1>List of garbages</h1>
       <table className="garbage-list__table">
         <tbody>
           <tr>
-            <th className="garbage-list__table-cell">No.</th>
-            <th className="garbage-list__table-cell">Name</th>
-            <th className="garbage-list__table-cell">Location</th>
+            <th className="garbage-list__table-header">No.</th>
+            <th className="garbage-list__table-header">Name</th>
+            <th className="garbage-list__table-header">Location</th>
           </tr>
           { garbages.map((garbage, index) => (
             <tr key={ index } >
@@ -25,7 +24,6 @@ const GarbageList = (props) => {
         )) }
         </tbody>
       </table>
-      { props.currentLocationLat && <p>Current location: { props.currentLocationLat }, { props.currentLocationLng }</p> }
     </div>
   );
 }

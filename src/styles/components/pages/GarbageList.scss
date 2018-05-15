@@ -1,9 +1,18 @@
 .garbage-list__table {
-  border: 1px solid #777;
+  border: 2px solid #777;
+  border-collapse: collapse;
   font-size: .8rem;
   text-align: center;
 }
 
+.garbage-list__table-header {
+  border: 2px solid #777;
+  padding: 3px 10px;
+  background: #222;
+  color: white;
+}
+
 .garbage-list__table-cell {
-  border: 1px solid #777;
+  border: 2px solid #777;
+  padding: 5px 10px;
 }
