@@ -1,10 +1,13 @@
 import * as React from 'react';
-import '../styles/components/Header.scss';
 import moment from 'moment';
+import MainMenu from './MainMenu';
+
+import '../styles/components/Header.scss';
 
 const Header = () =>  (
   <section className="header">
-      { moment().format('DD/MM/YYYY, h:mm A') }
+    <MainMenu />
+    <span className="time">{ moment().format('h:mm A') }</span>
   </section>
 );
 export default Header;

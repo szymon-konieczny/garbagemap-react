@@ -4,3 +4,10 @@
   margin-top: 40px;
   position: relative;
 }
+
+@media(max-width: 580px) {
+  .map-container {
+    height: 100vh;
+    margin: 0;
+  }
+}

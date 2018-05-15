@@ -2,17 +2,13 @@ import * as React from 'react';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import GarbageTypeSpotter from '../GarbageTypeSpotter';
 
-import '../../styles/components/MapContainer.scss';
 import type from '../../data/garbageTypes';
 import markers from '../../data/markers';
+import { fetchGarbages } from '../../actions/garbages';
+
+import '../../styles/components/pages/MapContainer.scss';
 
 class MapContainer extends React.Component {
-  
-  getGarbagesFromLocalStorage = () => {
-    const garbagesJSON = localStorage.getItem('garbageList');
-    const garbages = JSON.parse(garbagesJSON);
-    return garbages;
-  };
 
   markerColor = (type) => {
     switch (type) {
@@ -34,6 +30,7 @@ class MapContainer extends React.Component {
   };
   
   render() {
+    const garbages = fetchGarbages();
     return (
       <React.Fragment>
         <GarbageTypeSpotter 
@@ -52,6 +49,8 @@ class MapContainer extends React.Component {
             lat: this.props.currentLocationLat,
             lng: this.props.currentLocationLng
           }}
+          disableDefaultUI={ true }
+
         >
       
         { console.log(this.props.currentLocationLat, this.props.currentLocationLng) }
@@ -70,7 +69,7 @@ class MapContainer extends React.Component {
           position={{lat: this.props.currentLocationLat, lng: this.props.currentLocationLng}} 
           draggable={ false }
         />
-        { this.getGarbagesFromLocalStorage() && this.getGarbagesFromLocalStorage().map((marker, index) => 
+        { garbages && garbages.map((marker, index) => 
           <Marker 
             key={ index } 
             title={ marker.title } 

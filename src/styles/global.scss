@@ -3,7 +3,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   overflow: hidden;
   font-family: sans-serif;
+}
+
+.page {
+  padding: 50px 15px;
+}
+
+.is-active {
+  color: rgb(70, 155, 158);
 }
