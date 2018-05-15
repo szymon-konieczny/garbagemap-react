@@ -15,13 +15,13 @@ const GarbageList = (props) => {
             <th className="garbage-list__table-header">Name</th>
             <th className="garbage-list__table-header">Location</th>
           </tr>
-          { garbages.map((garbage, index) => (
+          { garbages !== null ? garbages.map((garbage, index) => (
             <tr key={ index } >
               <td className="garbage-list__table-cell">{ index + 1 }</td>
               <td className="garbage-list__table-cell">{ garbage.title }</td>
               <td className="garbage-list__table-cell">{ garbage.location.lat },{ garbage.location.lng }</td>
             </tr>
-        )) }
+        )) : <tr><td className="garbage-list__table-cell" colspan="3">Nothing to show yet...</td></tr> }
         </tbody>
       </table>
     </div>

@@ -5,7 +5,7 @@ import '../styles/components/MainMenu.scss';
 
 const MainMenu = () => (
   <nav>
-    <button className="main-menu__mobile" />
+    <div className="main-menu__mobile-toggle"></div>
     <ul className="main-menu">
       <li><NavLink to="/" activeClassName="is-active" exact={true} className="main-menu__item">Home</NavLink></li>
       <li><NavLink to="/about" activeClassName="is-active" className="main-menu__item">About the project</NavLink></li>

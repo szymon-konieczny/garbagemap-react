@@ -49,7 +49,7 @@ class MapContainer extends React.Component {
             lat: this.props.currentLocationLat,
             lng: this.props.currentLocationLng
           }}
-          disableDefaultUI={ true }
+          disableDefaultUI={ false }
 
         >
       
