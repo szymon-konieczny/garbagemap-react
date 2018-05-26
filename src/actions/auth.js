@@ -1,9 +1,6 @@
 import { firebase, googleAuthProvider } from '../firebase/firebase';
 
-export const handleLogin = () => {
-  return () => firebase.auth().signInWithPopup(googleAuthProvider);
-};
+const handleLogin = () => firebase.auth().signInWithPopup(googleAuthProvider);
+const handleLogout = () => firebase.auth().signOut();
 
-export const handleLogout = () => {
-  return () => firebase.auth().signOut();
-};
+export { handleLogin, handleLogout };

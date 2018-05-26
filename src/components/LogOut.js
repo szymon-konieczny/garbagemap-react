@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { handleLogout } from '../actions/auth';
 
-const LogOut = ({ handleLogout }) =>  (
+const LogOut = () => (
   <section className="logout">
     <button onClick={ handleLogout } >Log out</button>
   </section>

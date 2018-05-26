@@ -1,5 +1,4 @@
 import * as firebase from 'firebase';
-import firebaseui from 'firebaseui';
 import { fetchGarbages } from '../actions/garbages';
 
 const config = {
