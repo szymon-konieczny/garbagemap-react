@@ -11,11 +11,12 @@ const config = {
 };
 
 firebase.initializeApp(config);
+
 const database = firebase.database();
-
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+const auth = firebase.auth();
 
-export { firebase, googleAuthProvider, database as default };
+export { firebase, auth, googleAuthProvider, database as default };
 
 const garbages = fetchGarbages();
 database.ref('garbages').push(garbages);

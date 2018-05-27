@@ -11,7 +11,10 @@ const AppRouter = (props) => (
   <React.Fragment>
     <BrowserRouter basename={ process.env.PUBLIC_URL }  history={ browserHistory } >
       <div>
-        <Header />
+        <Header 
+          login={ props.login } 
+          logout={ props.logout }
+        />
         <Switch>
           <Route path="/"
             render={ () => <MapContainer 

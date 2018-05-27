@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { handleLogin } from '../actions/auth';
 
-const LogIn = () => (
+const LogIn = (props) => (
   <section className="login">
-    <button onClick={ handleLogin } >Log in with Google</button>
+    <button onClick={ props.login } >Log in with Google</button>
   </section>
 );
+
 export default LogIn;

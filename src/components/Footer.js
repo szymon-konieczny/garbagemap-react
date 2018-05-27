@@ -3,7 +3,7 @@ import '../styles/components/Footer.scss';
 
 const Footer = (props) => (
   <div className="footer">
-    <p>&copy; Szymon Konieczny | 
+    <p>&copy; { props.user && props.user } | 
     { props.currentLocationLat && <span> Current location: { props.currentLocationLat }, { props.currentLocationLng }</span> }
     </p>
   </div>

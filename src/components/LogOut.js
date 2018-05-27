@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { handleLogout } from '../actions/auth';
 
-const LogOut = () => (
+const LogOut = (props) => (
   <section className="logout">
-    <button onClick={ handleLogout } >Log out</button>
+    <button onClick={ props.logout } >Log out</button>
   </section>
 );
+
 export default LogOut;

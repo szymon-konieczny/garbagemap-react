@@ -5,11 +5,14 @@ import Auth from './Auth';
 
 import '../styles/components/Header.scss';
 
-const Header = () =>  (
+const Header = (props) =>  (
   <section className="header">
     <MainMenu />
     <span className="time">{ moment().format('h:mm A') }</span>
-    <Auth />
+    <Auth 
+      login={ props.login } 
+      logout={ props.logout }
+    />
   </section>
 );
 export default Header;
