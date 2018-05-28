@@ -19,6 +19,7 @@ const AppRouter = (props) => (
         <Switch>
           <Route path="/"
             render={ () => <MapContainer 
+              user={ props.user }
               currentLocationLat={ props.currentLocationLat } 
               currentLocationLng={ props.currentLocationLng } /> } 
             exact={ true } 

@@ -33,10 +33,14 @@ class MapContainer extends React.Component {
     const garbages = fetchGarbages();
     return (
       <React.Fragment>
-        <GarbageTypeSpotter 
-          currentLocationLat={ this.props.currentLocationLat } 
-          currentLocationLng={ this.props.currentLocationLng } 
-        />
+        { 
+          this.props.user && 
+          <GarbageTypeSpotter 
+            currentLocationLat={ this.props.currentLocationLat } 
+            currentLocationLng={ this.props.currentLocationLng } 
+          />
+        }
+        
         <Map 
           className="map-container"
           google={ this.props.google }
