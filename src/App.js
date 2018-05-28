@@ -43,7 +43,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <AppRouter 
-          loginGoolge={ this.handleLoginGoogle }
+          loginGoogle={ this.handleLoginGoogle }
           logout={ this.handleLogout }
           currentLocationLat={ this.state.currentLocation.lat } 
           currentLocationLng={ this.state.currentLocation.lng }
