@@ -12,14 +12,17 @@ class App extends React.Component {
       lat: null,
       lng: null
     },
+    user: null,
     userName: null
   };
 
   handleLoginGoogle = () => auth
     .signInWithPopup(googleAuthProvider)
     .then(result => {
-        const userName = result.user.displayName;
+        const user = result.user;
+        const userName = user.displayName;
         this.setState({
+            user,
             userName
         });
     });
@@ -28,9 +31,18 @@ class App extends React.Component {
     .signOut()
     .then(() => {
       this.setState({
+        user: null,
         userName: null
       });
     });
+
+  componentDidMount = () => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      } 
+    });
+  }
 
   static getDerivedStateFromProps = (nextProps, prevState) => ({
     currentLocation: {
@@ -38,11 +50,12 @@ class App extends React.Component {
       lng: nextProps.coords && nextProps.coords.longitude 
     }
   });
-
+  
   render() {
     return (
       <React.Fragment>
         <AppRouter 
+          user={ this.state.user }
           loginGoogle={ this.handleLoginGoogle }
           logout={ this.handleLogout }
           currentLocationLat={ this.state.currentLocation.lat } 

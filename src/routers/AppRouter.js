@@ -12,6 +12,7 @@ const AppRouter = (props) => (
     <BrowserRouter basename={ process.env.PUBLIC_URL }  history={ browserHistory } >
       <div>
         <Header 
+          user={ props.user }
           loginGoogle={ props.loginGoogle } 
           logout={ props.logout }
         />
