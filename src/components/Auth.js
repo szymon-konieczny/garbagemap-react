@@ -4,7 +4,7 @@ import LogOut from './LogOut';
 import '../styles/components/Auth.scss';
 
 const Auth = (props) => (
-  <React.Fragment className="auth-wrapper">
+  <div className="auth-wrapper">
     { props.user ?
       <LogOut 
         logout={ props.logout } 
@@ -14,7 +14,7 @@ const Auth = (props) => (
         loginGoogle={ props.loginGoogle } 
       /> 
     }
-  </React.Fragment>
+  </div>
 );
 
 export default Auth;
