@@ -10,7 +10,7 @@ const Header = (props) =>  (
     <MainMenu />
     <span className="time">{ moment().format('h:mm A') }</span>
     <Auth 
-      login={ props.login } 
+      loginGoogle={ props.loginGoogle } 
       logout={ props.logout }
     />
   </section>

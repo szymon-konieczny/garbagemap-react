@@ -4,8 +4,12 @@ import LogOut from './LogOut';
 
 const Auth = (props) => (
   <React.Fragment>
-    <LogOut logout={ props.logout } /> 
-    <LogIn login={ props.login } /> 
+    <LogOut 
+      logout={ props.logout } 
+    /> 
+    <LogIn 
+      loginGoogle={ props.loginGoogle } 
+    /> 
   </React.Fragment>
 );
 

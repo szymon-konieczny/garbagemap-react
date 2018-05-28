@@ -12,7 +12,7 @@ const AppRouter = (props) => (
     <BrowserRouter basename={ process.env.PUBLIC_URL }  history={ browserHistory } >
       <div>
         <Header 
-          login={ props.login } 
+          loginGoogle={ props.loginGoogle } 
           logout={ props.logout }
         />
         <Switch>
