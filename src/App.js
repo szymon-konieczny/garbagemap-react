@@ -38,8 +38,9 @@ class App extends React.Component {
 
   componentDidMount = () => {
     auth.onAuthStateChanged((user) => {
+      const userName = user.displayName;
       if (user) {
-        this.setState({ user });
+        this.setState({ user, userName });
       } 
     });
   }
