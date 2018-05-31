@@ -4,11 +4,14 @@ import GarbageTypeSpotter from '../GarbageTypeSpotter';
 
 import type from '../../data/garbageTypes';
 import markers from '../../data/markers';
-import { fetchGarbages } from '../../actions/garbages';
+import { refGarbages } from '../../firebase/firebase';
 
 import '../../styles/components/pages/MapContainer.scss';
 
 class MapContainer extends React.Component {
+  garbages = [];
+  garbagesArr = [];
+  garbagesTmp;
 
   markerColor = (type) => {
     switch (type) {
@@ -29,54 +32,66 @@ class MapContainer extends React.Component {
     };
   };
   
-  render() {
-    const garbages = fetchGarbages();
-    return (
-      <React.Fragment>
-        { 
-          this.props.user && 
-          <GarbageTypeSpotter 
-            currentLocationLat={ this.props.currentLocationLat } 
-            currentLocationLng={ this.props.currentLocationLng } 
-          />
+render() {
+  refGarbages.once('value', snapshot => {
+    this.garbagesTmp = Object.entries(snapshot.val())
+      .map((item, index) => {
+        const garbageConfig = {
+          type: item[1].type,
+          location: item[1].location,
+          userId: item[1].userId
         }
-        
-        <Map 
-          className="map-container"
-          google={ this.props.google }
-          initialCenter={{ 
-            lat: 42.0981495,
-            lng: 14.1433417
-           }}
-          zoom={ 18 }
-          center={{ 
-            lat: this.props.currentLocationLat,
-            lng: this.props.currentLocationLng
-          }}
-          disableDefaultUI={ false }
+        this.garbages[index] = garbageConfig;
+    });
+  });
 
-        >
-      
-        { console.log(this.props.currentLocationLat, this.props.currentLocationLng) }
-        
-        <Marker 
-          title="Current location"
-          icon={{
-            path: this.props.google.maps.SymbolPath.CIRCLE,
-            scale: 5.5,
-            fillColor: "00B2FF",
-            fillOpacity: 1,
-            strokeColor: 'white',
-            strokeWeight: 3.5,
-            strokeOpacity: 0.5
-          }}
-          position={{lat: this.props.currentLocationLat, lng: this.props.currentLocationLng}} 
-          draggable={ false }
+  console.log(this.garbages);
+
+  return (
+    <React.Fragment>
+      { 
+        this.props.user && 
+        <GarbageTypeSpotter 
+          user={ this.props.user }
+          currentLocationLat={ this.props.currentLocationLat } 
+          currentLocationLng={ this.props.currentLocationLng } 
         />
-        { garbages && garbages.map((marker, index) => 
+      }
+      <Map 
+        className="map-container"
+        google={ this.props.google }
+        initialCenter={{ 
+          lat: 42.0981495,
+          lng: 14.1433417
+          }}
+        zoom={ 18 }
+        center={{ 
+          lat: this.props.currentLocationLat,
+          lng: this.props.currentLocationLng
+        }}
+        disableDefaultUI={ false }
+
+      >
+      { console.log(this.props.currentLocationLat, this.props.currentLocationLng) }
+      { console.log(this.garbages) }
+      <Marker 
+        title="Current location"
+        icon={{
+          path: this.props.google.maps.SymbolPath.CIRCLE,
+          scale: 5.5,
+          fillColor: "#0090FF",
+          fillOpacity: 1,
+          strokeColor: 'white',
+          strokeWeight: 3.5,
+          strokeOpacity: 0.5
+        }}
+        position={{lat: this.props.currentLocationLat, lng: this.props.currentLocationLng}} 
+        draggable={ false }
+      />
+      { 
+        this.garbages.map((marker, index) => 
           <Marker 
             key={ index } 
-            title={ marker.title } 
             position={ marker.location } 
             icon={{
               path: this.props.google.maps.SymbolPath.CIRCLE,
@@ -86,10 +101,11 @@ class MapContainer extends React.Component {
               strokeColor: 'white',
               strokeWeight: 0.6
             }}
-          />) }
-        </Map>
-      </React.Fragment>
-    );
+          />
+        )
+      }
+      </Map>
+    </React.Fragment>);
   };
 };
 

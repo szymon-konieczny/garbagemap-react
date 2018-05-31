@@ -1,7 +1,7 @@
 import * as React from 'react';
 import moment from 'moment';
-import MainMenu from './MainMenu';
-import Auth from './Auth';
+import MainMenu from './menus/MainMenu';
+import Auth from './authentication/Auth';
 
 import '../styles/components/Header.scss';
 

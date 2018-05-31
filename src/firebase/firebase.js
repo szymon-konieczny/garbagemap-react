@@ -15,8 +15,6 @@ firebase.initializeApp(config);
 const database = firebase.database();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 const auth = firebase.auth();
+const refGarbages = database.ref('garbages');
 
-export { firebase, auth, googleAuthProvider, database as default };
-
-const garbages = fetchGarbages();
-database.ref('garbages').push(garbages);
+export { firebase, auth, googleAuthProvider, refGarbages, database as default };

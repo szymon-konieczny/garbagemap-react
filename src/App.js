@@ -16,6 +16,10 @@ class App extends React.Component {
     userName: null
   };
 
+  saveAuthUserToLocalStorage = (userName) => {
+    localStorage.setItem('activeUser', username);
+  }
+
   handleLoginGoogle = () => auth
     .signInWithPopup(googleAuthProvider)
     .then(result => {
@@ -25,6 +29,7 @@ class App extends React.Component {
             user,
             userName
         });
+
     });
   
   handleLogout = () => auth
