@@ -1,4 +1,5 @@
 import * as React from 'react';
+import moment from 'moment';
 import '../styles/components/GarbageTypeSpotter.scss';
 import GarbageType from './GarbageType';
 import types from '../data/garbageTypes';
@@ -41,14 +42,20 @@ export default class GarbageTypeSpotter extends React.Component {
         lat: this.props.currentLocationLat,
         lng: this.props.currentLocationLng
       },
-      userId: this.props.user.uid
+      userId: this.props.user.uid,
+      createdAt: moment().format('MMMM Do YYYY, h:mm:ss a')
     }
 
     this.garbages.push(this.garbage);
     const garbagesToJSON = JSON.stringify(this.garbages);
-    localStorage.setItem('garbageList', garbagesToJSON);
 
-    saveGarbageToDatabase(this.garbage);
+    if(this.props.currentLocationLat) {
+      localStorage.setItem('garbageList', garbagesToJSON);
+      saveGarbageToDatabase(this.garbage);
+    } else {
+      console.log('Unable to set location.');
+    }
+    
   }
 
   render(){

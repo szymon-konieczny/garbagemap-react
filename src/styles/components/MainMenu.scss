@@ -1,5 +1,5 @@
 .main-menu {
-  width: 600px;
+  width: 700px;
   list-style: none;
   display: flex;
   justify-content: center;
@@ -10,10 +10,11 @@
   color: white;
   text-decoration: none;
   padding: 5px 10px;
+  font-size: .8em;
 }
 
 .main-menu__item:hover {
-  color: green;
+  color: rgb(0, 128, 0);
 }
 
 .main-menu__mobile {

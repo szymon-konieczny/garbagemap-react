@@ -1,8 +1,9 @@
 import * as React from 'react';
+import '../../styles/components/LogOut.scss';
 
 const LogOut = (props) => (
   <section className="logout">
-    <button onClick={ props.logout } >Log out</button>
+    <a className="logout-link" onClick={ props.logout } >Log out</a>
   </section>
 );
 

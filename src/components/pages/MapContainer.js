@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import GarbageTypeSpotter from '../GarbageTypeSpotter';
-
+import moment from 'moment';
 import type from '../../data/garbageTypes';
 import markers from '../../data/markers';
 import { refGarbages } from '../../firebase/firebase';
@@ -39,13 +39,12 @@ render() {
         const garbageConfig = {
           type: item[1].type,
           location: item[1].location,
-          userId: item[1].userId
+          userId: item[1].userId,
+          createdAt: moment().format('MMMM Do YYYY, h:mm:ss a')
         }
         this.garbages[index] = garbageConfig;
     });
   });
-
-  console.log(this.garbages);
 
   return (
     <React.Fragment>

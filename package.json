@@ -6,6 +6,7 @@
   "dependencies": {
     "babel-loader": "^7.1.4",
     "clean-webpack-plugin": "^0.1.19",
+    "file-loader": "^1.1.11",
     "firebase": "^5.0.4",
     "firebaseui": "^3.0.0",
     "gh-pages": "^1.1.0",
