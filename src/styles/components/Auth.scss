@@ -1,11 +1,11 @@
 .auth-wrapper {
-  width: 200px;
+  width: 220px;
   height: auto;
   margin: 0 auto;
   background: transparent;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
   position: absolute;
   top: 0;
@@ -23,7 +23,7 @@
   color: #fff;
 }
 .account-menu__expanded {
-  width: 204px;
+  width: 220px;
   background: rgba(22, 22, 22, 0.8);
   box-shadow: 0 5px 4px -2px gray;
   display: flex;
@@ -47,6 +47,7 @@
   border-right: 2px solid cadetblue;
   border-bottom: 2px solid cadetblue;
 }
+
 @media(max-width: 580px) {
   .auth-wrapper {
     width: 30vw;
