@@ -5,13 +5,18 @@
 	cursor: pointer;
 	font-size: .7em;
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 }
 .login-form {
 	width: 100%;
 	margin: 3px auto;
+	padding: 0 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 .login-form__label, .login-submit-btn, .register-submit-btn {
 	width: 200px;
@@ -73,7 +78,7 @@
 	border-color: cadetblue;
 }
 
-@media(max-width: 306px) {
+@media(max-width: 360px) {
 	.login {
 		width: 100vw;
 		padding: 5px 10px;
