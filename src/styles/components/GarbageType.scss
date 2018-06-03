@@ -1,6 +1,6 @@
 .garbage-type {
-  width: 35px;
-  height: 35px;
+  min-width: 35px;
+  min-height: 35px;
   padding: 5px;
   margin: 5px;
   background: transparent;
@@ -23,10 +23,10 @@
   }
 }
 
-@media(max-width: 306px) {
+@media(max-width: 360px) {
   .garbage-type {
-    width: 30px;
-    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
     z-index: 33;
   }
 }

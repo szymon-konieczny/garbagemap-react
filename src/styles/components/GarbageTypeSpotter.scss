@@ -1,6 +1,6 @@
 .garbage-type-spotter {
   width: 75px;
-  height: 150px;
+  height: 100%;
   padding: 5px;
   font-size: .6em;
   font-weight: bold;
@@ -13,7 +13,7 @@
   align-items: center;
   position: absolute;
   z-index: 2;
-  top: calc(50% - 130px);
+  top: 0;
   left: 5px;
   list-style: none;
 }
@@ -24,7 +24,7 @@
   align-items: center;
 }
 
-@media(max-width: 306px) {
+@media(max-width: 360px) {
   .garbage-type-spotter {
     width: 100vw;
     height: 60px;
