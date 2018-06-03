@@ -1,6 +1,8 @@
 .header {
+  grid-column: 1;
+  grid-row: 1 / 2;
   width: 100vw;
-  height: 30px;
+  height: 100%;
   background: #000;
   box-shadow: 0 5px 3px -2px gray;
   color: #fff;
@@ -9,9 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  z-index: 2;
-  top: 0;
+  z-index: 36;
   transition: all .4s ease-in-out;
 }
 
@@ -20,7 +20,7 @@
   color: #777;
 }
 
-@media(max-width: 580px) {
+@media(max-width: 648px) {
   .header {
     background: black;
     display: flex;
@@ -29,7 +29,7 @@
   }
 }
 
-@media(max-width: 700px) {
+@media(max-width: 750px) {
   .time {
     display: none;
   }

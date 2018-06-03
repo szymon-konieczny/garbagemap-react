@@ -1,5 +1,5 @@
 .main-menu {
-  width: 700px;
+  width: 450px;
   list-style: none;
   display: flex;
   justify-content: center;
@@ -24,10 +24,9 @@
   display: none;
 }
 
-@media(max-width: 580px) {
+@media(max-width: 628px) {
   .main-menu {
     width: auto;
-    height: 100vh;
     list-style: none;
     display: flex;
     flex-direction: column;

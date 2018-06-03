@@ -1,11 +1,12 @@
 .garbage-type {
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   padding: 5px;
   margin: 5px;
   background: transparent;
   border: 3px solid #000;
   border-radius: 50%;
+  transition: all .3s ease-in-out;
   z-index: 2;
   cursor: pointer;
   &[type="tires"] {
@@ -19,5 +20,13 @@
   }
   &[type="other"] {
     background: purple;
+  }
+}
+
+@media(max-width: 306px) {
+  .garbage-type {
+    width: 30px;
+    height: 30px;
+    z-index: 33;
   }
 }

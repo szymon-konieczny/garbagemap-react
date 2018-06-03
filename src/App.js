@@ -1,9 +1,11 @@
 import * as React from 'react';
-import Header from './components/Header';
-import AppRouter from './routers/AppRouter';
-import Footer from './components/Footer';
 import { geolocated } from 'react-geolocated';
 import { auth, firebase, googleAuthProvider } from './firebase/firebase';
+
+import Header from './components/Header';
+import AppRouter from './routers/AppRouter';
+
+const setWatchPosition = user => user;
 
 class App extends React.Component {
   
@@ -46,6 +48,7 @@ class App extends React.Component {
       if (user) {
         const userName = user.displayName;
         this.setState({ user, userName });
+        setWatchPosition(user);
       } 
     });
   }
@@ -66,11 +69,6 @@ class App extends React.Component {
           logout={ this.handleLogout }
           currentLocationLat={ this.state.currentLocation.lat } 
           currentLocationLng={ this.state.currentLocation.lng }
-        />
-        <Footer 
-          user={ this.state.userName }
-          currentLocationLat={ this.state.currentLocation.lat } 
-          currentLocationLng={ this.state.currentLocation.lng } 
         />
       </React.Fragment>
     );

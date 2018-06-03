@@ -69,10 +69,7 @@ render() {
           lng: this.props.currentLocationLng
         }}
         disableDefaultUI={ false }
-
       >
-      { console.log(this.props.currentLocationLat, this.props.currentLocationLng) }
-      { console.log(this.garbages) }
       <Marker 
         title="Current location"
         icon={{

@@ -1,0 +1,11 @@
+.router-wrapper {
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 30px 1fr 30px;
+}
+.map-wrapper {
+	height: 100%;
+	position: relative;
+}

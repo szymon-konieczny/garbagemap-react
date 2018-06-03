@@ -4,6 +4,10 @@
 	margin: 3px;
 	cursor: pointer;
 	font-size: .7em;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
 }
 .login-form {
 	width: 100%;
@@ -31,6 +35,10 @@
 	height: 40px;
 	background-image: url('../../images/btn-google-normal.png');
 	background-repeat: no-repeat;
+	background-position: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .google:focus {
 	background-image: url('../../images/btn-google-focus.png');
@@ -45,7 +53,7 @@
 }
 .login-links {
 	width: 100%;
-	margin-bottom: 10px;
+	margin: 10px 0 5px 0;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -63,4 +71,19 @@
 .login-submit-btn:hover, .register-submit-btn:hover {
 	color: #fff;
 	border-color: cadetblue;
+}
+
+@media(max-width: 306px) {
+	.login {
+		width: 100vw;
+		padding: 5px 10px;
+	}
+	.login-form {
+		width: 100%;
+		margin: 3px auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 }

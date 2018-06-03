@@ -30,6 +30,7 @@
   justify-content: center;
   align-items: center;
   opacity: 1;
+  z-index: 1;
   transition: all .5s ease-in-out;
 }
 .toggle-link {
@@ -48,15 +49,23 @@
   border-bottom: 2px solid cadetblue;
 }
 
-@media(max-width: 580px) {
+@media(max-width: 926px) {
   .auth-wrapper {
-    width: 30vw;
-    margin: 0 auto;
+    right: 0;
   }
 }
 
-@keyframes expand {
-  100% {
-    opacity: 1;
+@media(max-width: 654px) {
+  .account-menu__expanded {
+    align-self: flex-end;
+  }
+}
+
+@media(max-width: 306px) {
+  .account-menu__expanded {
+    width: 100vw;
+    background: rgba(22, 22, 22, 0.9);
+    align-self: flex-end;
+    z-index: 36;
   }
 }

@@ -24,6 +24,7 @@
 	margin: 0 0 0 0;
 	border-radius: 50%;
 	box-shadow: 0 0 4px 1px;
+	transition: all .4s .2s cubic-bezier(0,1.29,.41,1.49); 
 }
 .user-profile__name-wrapper {
 	display: flex;
@@ -51,3 +52,17 @@
 	border-bottom: 2px solid #fff;
 	border-radius: 10px;
 }
+
+@media(max-width: 306px) {
+	.user-profile__image {
+		width: 70px;
+		height: 70px;
+	}
+	.user-profile__name {
+		font-size: 1.1em;
+		line-height: 1.7em;
+	}
+	.user-profile__email {
+		font-size: 1.1em;
+	}
+  }

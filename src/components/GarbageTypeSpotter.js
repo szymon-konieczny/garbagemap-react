@@ -1,10 +1,11 @@
 import * as React from 'react';
 import moment from 'moment';
-import '../styles/components/GarbageTypeSpotter.scss';
 import GarbageType from './GarbageType';
 import types from '../data/garbageTypes';
 import database from '../firebase/firebase';
 import { saveGarbageToDatabase } from '../actions/garbages';
+
+import '../styles/components/GarbageTypeSpotter.scss';
 
 export default class GarbageTypeSpotter extends React.Component {
   
@@ -62,7 +63,10 @@ export default class GarbageTypeSpotter extends React.Component {
     return (
       <ul className="garbage-type-spotter">
         { types.map((type, index) => 
-          <li key={ index }>
+          <li
+            className="garbage-type-spotter__item" 
+            key={ index }
+          >
             <GarbageType 
               handleAddGarbage={ this.addGarbageToLocalStorage }
               type={ type }

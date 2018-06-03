@@ -1,21 +1,24 @@
 import * as React from 'react';
 import { BrowserRouter, browserHistory, Switch, Route } from 'react-router-dom';
-import Header from '../components/Header';
 
+import Header from '../components/Header';
 import MapContainer from '../components/pages/MapContainer';
 import AboutPage from '../components/pages/AboutPage';
 import GarbageList from '../components/pages/GarbageList';
 import ContactPage from '../components/pages/ContactPage';
+import Footer from '../components/Footer';
+
+import '../styles/components/AppRouter.scss';
 
 const AppRouter = (props) => (
-  <React.Fragment>
-    <BrowserRouter basename={ process.env.PUBLIC_URL }  history={ browserHistory } >
-      <div>
-        <Header 
-          user={ props.user }
-          loginGoogle={ props.loginGoogle } 
-          logout={ props.logout }
-        />
+  <BrowserRouter basename={ process.env.PUBLIC_URL }  history={ browserHistory } >
+    <div className="router-wrapper">
+      <Header 
+        user={ props.user }
+        loginGoogle={ props.loginGoogle } 
+        logout={ props.logout }
+      />
+      <div className="map-wrapper">
         <Switch>
           <Route path="/"
             render={ () => <MapContainer 
@@ -37,7 +40,12 @@ const AppRouter = (props) => (
           />
         </Switch>
       </div>
-    </BrowserRouter>
-  </React.Fragment>
+      <Footer 
+        user={ props.user }
+        currentLocationLat={ props.currentLocationLat } 
+        currentLocationLng={ props.currentLocationLng } 
+      />
+    </div>
+  </BrowserRouter>
 )
 export default AppRouter;
