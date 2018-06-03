@@ -57,12 +57,16 @@
 	.user-profile__image {
 		width: 70px;
 		height: 70px;
+		margin: 0 5px;
+	}
+	.user-profile__name-wrapper {
+		padding: 0 10px;
 	}
 	.user-profile__name {
-		font-size: 1.1em;
+		font-size: 1.2em;
 		line-height: 1.7em;
 	}
 	.user-profile__email {
 		font-size: 1.1em;
 	}
-  }
+}
