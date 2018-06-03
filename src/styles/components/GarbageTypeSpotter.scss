@@ -24,7 +24,7 @@
   align-items: center;
 }
 
-@media(max-width: 360px) {
+@media(max-width: 360px), (max-height: 320px) {
   .garbage-type-spotter {
     width: 100vw;
     height: 60px;
