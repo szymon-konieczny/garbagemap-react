@@ -5,18 +5,22 @@ import UserMenu from '../menus/UserMenu';
 
 import '../../styles/components/Auth.scss';
 
-const Auth = (props) => {
-  const toggler = document.querySelector('.toggle-link');
-  const toExpand = document.querySelector('.account-menu__expanded');
+const toggleLink = React.createRef();
+const accountMenuExpanded = React.createRef();
 
-  expandMenu(toggler, toExpand);
+const Auth = (props) => {
+
+  const toggleLinkRef = toggleLink.current;
+  const accountMenuExpandedRef = accountMenuExpanded.current;
+
+  expandMenu(toggleLinkRef, accountMenuExpandedRef);
   
   return (
     <div className="auth-wrapper">
       <div className="account-menu">
-        <a className="toggle-link" href="#">{ props.user ? 'Dashboard' : 'Log in' } <span className="toggler"></span></a>
+        <a ref={ toggleLink } className="toggle-link" href="#">{ props.user ? 'Dashboard' : 'Log in' } <span className="toggler"></span></a>
       </div>
-      <div className="account-menu__expanded hidden">
+      <div ref={ accountMenuExpanded } className="account-menu__expanded hidden">
       { props.user ?
         <UserMenu
           user={ props.user } 
