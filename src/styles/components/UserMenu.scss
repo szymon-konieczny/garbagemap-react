@@ -19,8 +19,8 @@
 	line-height: 1.2em;
 }
 .user-profile__image {
-	min-width: 50px;
-	min-height: 50px;
+	max-width: 50px;
+	max-height: 50px;
 	margin: 0 0 0 0;
 	border-radius: 50%;
 	box-shadow: 0 0 4px 1px;
@@ -55,8 +55,8 @@
 
 @media(max-width: 360px) {
 	.user-profile__image {
-		min-width: 70px;
-		min-height: 70px;
+		max-width: 70px;
+		max-height: 70px;
 		margin: 0 5px;
 		padding: 0 10px;
 	}
