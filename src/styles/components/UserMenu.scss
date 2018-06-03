@@ -19,8 +19,8 @@
 	line-height: 1.2em;
 }
 .user-profile__image {
-	width: 50px;
-	height: 50px;
+	min-width: 50px;
+	min-height: 50px;
 	margin: 0 0 0 0;
 	border-radius: 50%;
 	box-shadow: 0 0 4px 1px;
