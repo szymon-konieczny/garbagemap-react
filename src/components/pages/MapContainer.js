@@ -10,8 +10,6 @@ import '../../styles/components/pages/MapContainer.scss';
 
 class MapContainer extends React.Component {
   garbages = [];
-  garbagesArr = [];
-  garbagesTmp;
 
   markerColor = (type) => {
     switch (type) {
@@ -33,18 +31,18 @@ class MapContainer extends React.Component {
   };
   
 render() {
-  refGarbages.once('value', snapshot => {
-    this.garbagesTmp = Object.entries(snapshot.val())
+  refGarbages.once('value', snapshot => Object.entries(snapshot.val())
       .map((item, index) => {
         const garbageConfig = {
           type: item[1].type,
           location: item[1].location,
           userId: item[1].userId,
-          createdAt: moment().format('MMMM Do YYYY, h:mm:ss a')
+          createdAt: item[1].createdAt,
+          description: item[1].description  
         }
         this.garbages[index] = garbageConfig;
-    });
-  });
+    })
+  );
 
   return (
     <React.Fragment>
@@ -89,13 +87,14 @@ render() {
           <Marker 
             key={ index } 
             position={ marker.location } 
+            description={ marker.description }
             icon={{
               path: this.props.google.maps.SymbolPath.CIRCLE,
-              scale: 7.5,
+              scale: 6.5,
               fillColor: this.markerColor(marker.type),
               fillOpacity: 0.95,
               strokeColor: 'white',
-              strokeWeight: 0.6
+              strokeWeight: 2.4
             }}
           />
         )

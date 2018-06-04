@@ -1,9 +1,11 @@
 import database, { refGarbages } from '../firebase/firebase';
 
 export const fetchGarbages = () => {
-  const garbagesJSON = localStorage.getItem('garbageList');
-  const garbages = JSON.parse(garbagesJSON);
-  return garbages;
+  let garbagesTmp;
+  refGarbages.once('value', snapshot => {
+    garbagesTmp = Object.entries(snapshot.val());
+  });
+  return garbagesTmp;
 };
 
 export const saveGarbageToDatabase = (garbage) => {

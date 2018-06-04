@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
+
 import '../../styles/components/UserMenu.scss';
 
 const UserMenu = (props) => (
@@ -10,7 +12,10 @@ const UserMenu = (props) => (
         <p className="user-profile__email">{ props.user.email }</p>
       </div>
     </div>
-    <a className="logout-link" onClick={ props.logout } >Log out</a>
+    <ul className="user-menu__links">
+      <li><NavLink to={`/user/${props.user.uid}`} activeClassName="user-menu__link--active" className="user-menu__link">Your account</NavLink></li>
+      <li><a className="logout-link" onClick={ props.logout } >Log out</a></li>
+    </ul>
   </section>
 );
 

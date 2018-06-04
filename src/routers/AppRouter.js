@@ -2,9 +2,10 @@ import * as React from 'react';
 import { BrowserRouter, browserHistory, Switch, Route } from 'react-router-dom';
 
 import Header from '../components/Header';
+import GarbageList from '../components/GarbageList';
 import MapContainer from '../components/pages/MapContainer';
 import AboutPage from '../components/pages/AboutPage';
-import GarbageList from '../components/pages/GarbageList';
+import UserPage from '../components/pages/UserPage';
 import ContactPage from '../components/pages/ContactPage';
 import Footer from '../components/Footer';
 
@@ -30,7 +31,10 @@ const AppRouter = (props) => (
           <Route path="/about"
             render={ () => <AboutPage /> } 
           />
-          <Route path="/list"
+          <Route path="/user/:id"
+            render={ () => <UserPage user={ props.user } /> } 
+          />
+          <Route path="user/list"
             render={ () => <GarbageList 
               currentLocationLat={ props.currentLocationLat } 
               currentLocationLng={ props.currentLocationLng } /> } 

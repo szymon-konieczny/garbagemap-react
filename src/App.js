@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { geolocated } from 'react-geolocated';
 import { auth, firebase, googleAuthProvider } from './firebase/firebase';
+import { withRouter } from 'react-router-dom';
 
 import Header from './components/Header';
 import AppRouter from './routers/AppRouter';
-
-const setWatchPosition = user => user;
 
 class App extends React.Component {
   
@@ -15,9 +14,12 @@ class App extends React.Component {
       lng: null
     },
     user: null,
-    userName: null
+    userName: null,
+    userId: null
   };
-
+  redirectHome = (history) => {
+    history.push("/"); 
+  }
   saveAuthUserToLocalStorage = (userName) => {
     localStorage.setItem('activeUser', username);
   }
@@ -27,28 +29,33 @@ class App extends React.Component {
     .then(result => {
         const user = result.user;
         const userName = user.displayName;
+        const userId = user.uid;
+
         this.setState({
             user,
-            userName
+            userName,
+            userId
         });
 
     });
   
-  handleLogout = () => auth
+  handleLogout = () => {auth
     .signOut()
     .then(() => {
       this.setState({
         user: null,
-        userName: null
-      });
+        userName: null,
+        userId: null
+      }); 
     });
+  };
 
   componentDidMount = () => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         const userName = user.displayName;
-        this.setState({ user, userName });
-        setWatchPosition(user);
+        const userId = user.uid;
+        this.setState({ user, userName, userId });
       } 
     });
   }
@@ -65,6 +72,7 @@ class App extends React.Component {
       <React.Fragment>
         <AppRouter 
           user={ this.state.user }
+          redirectHome={ this.redirectHome }
           loginGoogle={ this.handleLoginGoogle }
           logout={ this.handleLogout }
           currentLocationLat={ this.state.currentLocation.lat } 

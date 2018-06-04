@@ -9,6 +9,20 @@
 	align-items: center;
 	cursor: pointer;
 }
+.user-menu__links {
+	list-style: none;
+}
+.user-menu__link {
+	font-size: .8em;
+	text-decoration: none;
+	color: rgb(255, 255, 255);
+}
+.user-menu__link:hover {
+	color: cadetblue;
+}
+.user-menu__link--active {
+	color: rgb(51, 255, 0);
+}
 .user-info {
 	width: 100%;
 	padding: 0 5px;
@@ -41,7 +55,6 @@
 	font-weight: normal;
 }
 .logout-link {
-	width: 40%;
 	height: 28px;
 	margin: 3px auto;
 	font-size: .7em;

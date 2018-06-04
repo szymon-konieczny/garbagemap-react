@@ -4,6 +4,7 @@ import GarbageType from './GarbageType';
 import types from '../data/garbageTypes';
 import database from '../firebase/firebase';
 import { saveGarbageToDatabase } from '../actions/garbages';
+import uuidv1 from 'uuid/v1';
 
 import '../styles/components/GarbageTypeSpotter.scss';
 
@@ -17,7 +18,8 @@ export default class GarbageTypeSpotter extends React.Component {
       lat: null,
       lng: null
     },
-    userId: null
+    userId: null,
+    description: null
   };
 
   // setMarkerTitle = (type) => {
@@ -38,13 +40,15 @@ export default class GarbageTypeSpotter extends React.Component {
 
   addGarbageToLocalStorage = (type) => {
     this.garbage = {
+      id: uuidv1(),
       type: type,
       location: {
         lat: this.props.currentLocationLat,
         lng: this.props.currentLocationLng
       },
       userId: this.props.user.uid,
-      createdAt: moment().format('MMMM Do YYYY, h:mm:ss a')
+      createdAt: moment().format('MMMM Do YYYY, h:mm:ss a'),
+      description: null
     }
 
     this.garbages.push(this.garbage);
