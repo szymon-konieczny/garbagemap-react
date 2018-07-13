@@ -5,14 +5,16 @@ import { fetchGarbages } from '../actions/garbages';
 
 import '../styles/components/pages/GarbageList.scss';
 
-class GarbageList extends React.Component {
+export default class GarbageList extends React.Component {
 
-  garbages = [];
+  state = {
+    garbages: []
+  };
 
-  render() {
+  componentDidMount = () => {
     refGarbages.once('value', snapshot => Object.entries(snapshot.val())
       .filter(item => item[1].userId === this.props.user.uid )
-      .map((garbage, index) => {
+      .map(garbage => {
         const garbageConfig = {
           type: garbage[1].type,
           location: garbage[1].location,
@@ -20,12 +22,23 @@ class GarbageList extends React.Component {
           createdAt: garbage[1].createdAt,
           description: garbage[1].description
         }
-        this.garbages[index] = garbageConfig;
+        this.setState(prevState => ({
+          garbages: [...prevState.garbages, garbageConfig]
+        }));
       }));
+      localStorage.setItem('userGarbages', this.state.garbages);
+  };
 
+  render() {
     return (
       <div className="page">
-        <h3>You have spoted { this.garbages.length } threat{ this.garbages.length > 1 || this.garbages.length === 0 ? 's' : '' }.</h3>
+        <h3>You have spoted 
+        { this.state.garbages.length 
+          ? ' ' + this.state.garbages.length 
+          : ' no ' 
+        } threat
+        { this.state.garbages.length > 1 || this.state.garbages.length === 0 ? 's' : '' }.
+        </h3>
         <table className="garbage-list__table">
           <tbody>
             <tr>
@@ -36,7 +49,7 @@ class GarbageList extends React.Component {
               <th className="garbage-list__table-header">Date of Addition</th>
               <th className="garbage-list__table-header">Actions</th>
             </tr>
-            { this.garbages ? this.garbages.map((garbage, index) => (
+            { this.state.garbages ? this.state.garbages.map((garbage, index) => (
               <tr key={ index } >
                 <td className="garbage-list__table-cell">{ index + 1 }</td>
                 <td className="garbage-list__table-cell">{ 
@@ -54,6 +67,5 @@ class GarbageList extends React.Component {
         </table>
       </div>
     );
-  }
-}
-export default GarbageList;
+  };
+};

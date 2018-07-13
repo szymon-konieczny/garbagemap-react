@@ -17,12 +17,14 @@ class App extends React.Component {
     userName: null,
     userId: null
   };
+
   redirectHome = (history) => {
     history.push("/"); 
-  }
+  };
+
   saveAuthUserToLocalStorage = (userName) => {
-    localStorage.setItem('activeUser', username);
-  }
+    localStorage.setItem('activeUser', userName);
+  };
 
   handleLoginGoogle = () => auth
     .signInWithPopup(googleAuthProvider)
@@ -36,7 +38,6 @@ class App extends React.Component {
             userName,
             userId
         });
-
     });
   
   handleLogout = () => {auth
@@ -72,6 +73,7 @@ class App extends React.Component {
       <React.Fragment>
         <AppRouter 
           user={ this.state.user }
+          userName={ this.state.userName }
           redirectHome={ this.redirectHome }
           loginGoogle={ this.handleLoginGoogle }
           logout={ this.handleLogout }
@@ -80,8 +82,8 @@ class App extends React.Component {
         />
       </React.Fragment>
     );
-  }
-}
+  };
+};
 
 export default geolocated({
   positionOptions: {

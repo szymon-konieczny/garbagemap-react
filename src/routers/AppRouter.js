@@ -34,7 +34,7 @@ const AppRouter = (props) => (
           <Route path="/user/:id"
             render={ () => <UserPage user={ props.user } /> } 
           />
-          <Route path="user/list"
+          <Route path="user/:id/list"
             render={ () => <GarbageList 
               currentLocationLat={ props.currentLocationLat } 
               currentLocationLng={ props.currentLocationLng } /> } 

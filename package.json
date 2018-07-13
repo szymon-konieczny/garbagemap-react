@@ -1,6 +1,6 @@
 {
   "homepage": "http://szymon-konieczny.github.io/garbagemap-react",
-  "name": "garbagemap-react",
+  "name": "GarbageMap",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,9 +17,11 @@
     "moment": "^2.22.1",
     "node-sass": "^4.9.0",
     "react": "^16.3.2",
+    "react-click-outside": "tj/react-click-outside",
     "react-dom": "^16.3.2",
     "react-geolocated": "^2.3.2",
     "react-modal": "^3.4.4",
+    "react-outside-click-handler": "^1.2.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",

@@ -1,14 +1,25 @@
 import * as React from 'react';
 import GarbageList from '../GarbageList';
 
-const UserPage = (props) => {
-  return (
-    <div className="page">
-      
-      <p>Hello { props.user.displayName }!</p>
-      <GarbageList user={ props.user } />
-      
-    </div>
-  );
-}
-export default UserPage;
+export default class UserPage extends React.Component {
+  state = {
+    userName: null
+  };
+
+  componentDidMount = () => {
+    this.setState({
+      userName: this.props.user.displayName
+    });
+  };
+
+  render() {
+    return (
+      <div className="page">
+        
+        <p>Hello { this.state.userName}!</p>
+        <GarbageList user={ this.props.user } />
+        
+      </div>
+    );
+  };
+};

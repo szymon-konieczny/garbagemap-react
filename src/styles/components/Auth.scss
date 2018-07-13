@@ -33,18 +33,22 @@
   z-index: 1;
   transition: all .5s ease-in-out;
 }
-.toggle-link {
+.toggle-btn {
+  height: 100%;
+  background: transparent;
+  border: none;
   padding: 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #ccc;
   text-decoration: none;
+  cursor: pointer;
 }
-.toggle-link:hover {
+.toggle-btn:hover {
   color: cadetblue;
 }
-.toggle-link:hover .toggler {
+.toggle-btn:hover .toggler {
   border-right: 2px solid cadetblue;
   border-bottom: 2px solid cadetblue;
 }

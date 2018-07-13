@@ -1,38 +1,52 @@
 import * as React from 'react';
-import { expandMenu } from '../../actions/menu';
 import LogIn from './LogIn';
 import UserMenu from '../menus/UserMenu';
 
 import '../../styles/components/Auth.scss';
 
-const toggleLink = React.createRef();
-const accountMenuExpanded = React.createRef();
+export default class Auth extends React.Component {
 
-const Auth = (props) => {
+  state = {
+    showUserMenu: false
+  };
 
-  const toggleLinkRef = toggleLink.current;
-  const accountMenuExpandedRef = accountMenuExpanded.current;
+  toggleUserMenu = () => {
+    this.setState(prevState => ({
+      showUserMenu: !prevState.showUserMenu
+    }));
+  };
 
-  expandMenu(toggleLinkRef, accountMenuExpandedRef);
-  
-  return (
-    <div className="auth-wrapper">
-      <div className="account-menu">
-        <a ref={ toggleLink } className="toggle-link" href="#">{ props.user ? 'Dashboard' : 'Log in' } <span className="toggler"></span></a>
+  handleUserMenuClose = () => {
+    this.setState({
+      showUserMenu: false
+    });
+  };
+
+  render() {
+    return (
+      <div className="auth-wrapper">
+        <div className="account-menu">
+          <button tabIndex="4" onMouseDown={ this.toggleUserMenu } className="toggle-btn">
+          { this.props.user ? 'Dashboard' : 'Log in' } 
+            <span className="toggler" />
+          </button>
+        </div>
+        { this.state.showUserMenu && (
+            <div className="account-menu__expanded">
+            { this.props.user
+              ? <UserMenu
+                  handleClose={ this.handleUserMenuClose }
+                  user={ this.props.user } 
+                  logout={ this.props.logout } 
+                /> 
+              : <LogIn
+                  handleClose={ this.handleUserMenuClose } 
+                  loginGoogle={ this.props.loginGoogle } 
+                /> 
+            }
+            </div>
+          )}  
       </div>
-      <div ref={ accountMenuExpanded } className="account-menu__expanded hidden">
-      { props.user ?
-        <UserMenu
-          user={ props.user } 
-          logout={ props.logout } 
-        /> 
-        :
-        <LogIn 
-          loginGoogle={ props.loginGoogle } 
-        /> 
-      }
-      </div>
-    </div>
-  );
+    );
+  };
 };
-export default Auth;
